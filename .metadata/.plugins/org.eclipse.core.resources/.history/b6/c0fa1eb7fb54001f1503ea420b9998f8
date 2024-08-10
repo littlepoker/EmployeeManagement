@@ -1,0 +1,12 @@
+package com.example.demo;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@FeignClient(name = "department-service", url = "localhost:8081/department")
+public interface DepartmentClient {
+	@PostMapping("/")
+	public void setDepartment(@RequestParam("id") int id, @RequestParam("userId") int userId);
+}
